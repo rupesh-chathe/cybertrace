@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: #0a0e14;
+    color: #e2e8f0;
+  }
+}
+
+@layer utilities {
+  .animate-slide-in {
+    animation: slide-in 0.25s ease-out;
+  }
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+  }
+  .animate-pulse-soft {
+    animation: pulse-soft 2s ease-in-out infinite;
+  }
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #334155 transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 3px;
+  }
+}
+
+@keyframes slide-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* Print styles for forensic report */
+@media print {
+  body { background: white !important; color: black !important; }
+  .no-print { display: none !important; }
+  .print-only { display: block !important; }
+  .print-page { 
+    background: white !important; 
+    color: black !important;
+    padding: 0 !important;
+  }
+  .print-section { page-break-inside: avoid; }
+}
